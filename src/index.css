@@ -28,3 +28,7 @@ h4 {
 .container {
     padding: 40px 62px;
 }
+
+.center {
+    text-align: center;
+}
