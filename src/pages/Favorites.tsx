@@ -1,10 +1,10 @@
 import React from 'react'
-import { CatType } from '../interfaces/cat.interface'
+import { FavoritesType } from '../interfaces/favorites.interfase'
 
 import CatList from '../components/CatList'
 
 interface FavoritesProps {
-    favoritesCat: CatType[] | null
+    favoritesCat: FavoritesType[] | null
 }
 
 const Favorites: React.FC<FavoritesProps> = ({ favoritesCat }) => {

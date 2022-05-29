@@ -1,12 +1,13 @@
 import React from 'react'
 import { CatType } from '../../interfaces/cat.interface'
+import { FavoritesType } from '../../interfaces/favorites.interfase'
 
 import CatItem from '../CatItem'
 
 import './CatList.scss'
 
 interface CatListProps {
-    catsData: CatType[] | null
+    catsData: CatType[] | FavoritesType[] | null
 }
 
 const CatList: React.FC<CatListProps> = ({ catsData }) => {

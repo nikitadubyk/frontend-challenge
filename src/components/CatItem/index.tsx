@@ -20,7 +20,7 @@ const CatItem: React.FC<CarItemProps> = ({ url, id }) => {
         dataFromLS.find((cat: CatType) => cat.id === id)
             ? setIsFavorite(true)
             : setIsFavorite(false)
-    }, [id, onAddToFavorite])
+    }, [id])
 
     return (
         <div className={styles.card}>
@@ -38,7 +38,10 @@ const CatItem: React.FC<CarItemProps> = ({ url, id }) => {
                 onMouseOut={e =>
                     !isFavorite ? (e.currentTarget.src = './heart.svg') : null
                 }
-                onClick={() => onAddToFavorite(id, url)}
+                onClick={() => {
+                    onAddToFavorite(id, url)
+                    setIsFavorite(prevState => !prevState)
+                }}
             />
         </div>
     )

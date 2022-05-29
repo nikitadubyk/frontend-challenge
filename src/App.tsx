@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useHttp } from './hooks/http.hook'
 import { CatType } from './interfaces/cat.interface'
+import { FavoritesType } from './interfaces/favorites.interfase'
 import AppContext from './context/app.context'
 
 import Header from './components/Header'
@@ -10,7 +11,7 @@ import Favorites from './pages/Favorites'
 
 const App: React.FC = () => {
     const [data, setData] = useState<CatType[] | null>(null)
-    const [favoritesCat, setFavoritesCat] = useState<CatType[]>([])
+    const [favoritesCat, setFavoritesCat] = useState<FavoritesType[]>([])
     const { loading, error, request } = useHttp()
 
     useEffect(() => {
@@ -33,7 +34,7 @@ const App: React.FC = () => {
         fetchCats()
     }, [request])
 
-    const onAddToFavorite = (id: string, url: string) => {
+    const onAddToFavorite = useCallback((id: string, url: string) => {
         const obj = {
             id,
             url,
@@ -60,7 +61,7 @@ const App: React.FC = () => {
                 setFavoritesCat([obj])
             }
         }
-    }
+    }, [])
 
     return (
         <AppContext.Provider value={{ onAddToFavorite }}>

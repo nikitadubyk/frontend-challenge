@@ -1,7 +1,7 @@
 export interface CatType {
-    breeds?: []
+    breeds: []
     id: string
     url: string
-    height?: number
-    width?: number
+    height: number
+    width: number
 }

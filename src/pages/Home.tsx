@@ -5,8 +5,8 @@ import { CatType } from '../interfaces/cat.interface'
 
 interface HomeProps {
     data: CatType[] | null
-    loading?: boolean
-    error?: string | null
+    loading: boolean
+    error: string | null
 }
 
 const Home: React.FC<HomeProps> = ({ loading, error, data }) => {
