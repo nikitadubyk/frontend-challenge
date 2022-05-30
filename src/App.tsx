@@ -80,13 +80,13 @@ const App: React.FC = () => {
             <main>
                 <Routes>
                     <Route
-                        path='/'
+                        path='https://nikitadubyk.github.io/frontend-challenge/'
                         element={
                             <Home loading={loading} error={error} data={data} />
                         }
                     />
                     <Route
-                        path='/favorites'
+                        path='https://nikitadubyk.github.io/frontend-challenge/favorites'
                         element={<Favorites favoritesCat={favoritesCat} />}
                     />
                 </Routes>
