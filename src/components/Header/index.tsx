@@ -10,7 +10,7 @@ const Header: React.FC = () => {
                 <ul>
                     <li>
                         <NavLink
-                            to='https://nikitadubyk.github.io/frontend-challenge/'
+                            to='/'
                             className={({ isActive }) =>
                                 isActive ? 'link_active' : undefined
                             }
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
                     </li>
                     <li>
                         <NavLink
-                            to='https://nikitadubyk.github.io/frontend-challenge/favorites'
+                            to='/favorites'
                             className={({ isActive }) =>
                                 isActive ? 'link_active' : undefined
                             }
