@@ -32,3 +32,9 @@ h4 {
 .center {
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+}

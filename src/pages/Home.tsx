@@ -15,8 +15,8 @@ const Home: React.FC<HomeProps> = ({ loading, error, data }) => {
             {error && (
                 <p className='center'>Произошла котоошибка, попробуйте еще</p>
             )}
-            {loading && <p className='center'>идет загрузка котиков...</p>}
             <CatList catsData={data} />
+            {loading && <p className='center'>идет загрузка котиков...</p>}
         </div>
     )
 }

@@ -10,29 +10,40 @@ import Home from './pages/Home'
 import Favorites from './pages/Favorites'
 
 const App: React.FC = () => {
-    const [data, setData] = useState<CatType[] | null>(null)
+    const [data, setData] = useState<CatType[]>([])
     const [favoritesCat, setFavoritesCat] = useState<FavoritesType[]>([])
     const { loading, error, request } = useHttp()
+
+    async function fetchCats() {
+        const catsData = await request(
+            'https://api.thecatapi.com/v1/images/search?limit=20',
+            {
+                'x-api-key': process.env.REACT_APP_API_KEY,
+            }
+        )
+
+        setData(prevCats => [...prevCats, ...catsData])
+    }
 
     useEffect(() => {
         //@ts-ignore
         const data = JSON.parse(localStorage.getItem('cats'))
         !data && localStorage.setItem('cats', JSON.stringify([]))
-        setFavoritesCat(data)
-
-        async function fetchCats() {
-            const catsData = await request(
-                'https://api.thecatapi.com/v1/images/search?limit=15',
-                {
-                    'x-api-key': process.env.REACT_APP_API_KEY,
-                }
-            )
-
-            setData(catsData)
-        }
+        setFavoritesCat(data ? data : [])
 
         fetchCats()
-    }, [request])
+    }, [])
+
+    const handleScroll = (e: any) => {
+        window.innerHeight + e.target.documentElement.scrollTop ===
+            e.target.documentElement.offsetHeight && fetchCats()
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
 
     const onAddToFavorite = useCallback((id: string, url: string) => {
         const obj = {
